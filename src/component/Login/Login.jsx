@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 
 const Login = () => {
 
-    const { singIn, googleSingIn, githubSingIn } = useContext(AuthContext);
+    const {setUser, singIn, googleSingIn, githubSingIn } = useContext(AuthContext);
     const [error, setError] = useState('')
+    const navigate = useNavigate()
+
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/';
 
     const handleGoogleSingIn = () => {
         googleSingIn()
@@ -45,6 +49,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                navigate(from, {replace : true})
             })
             .catch(error => {
                 console.log(error)
