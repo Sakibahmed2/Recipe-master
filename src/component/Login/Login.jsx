@@ -6,7 +6,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 
 const Login = () => {
 
-    const {setUser, singIn, googleSingIn, githubSingIn } = useContext(AuthContext);
+    const { setUser, singIn, googleSingIn, githubSingIn } = useContext(AuthContext);
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
@@ -19,6 +19,7 @@ const Login = () => {
                 const loginUser = result.user
                 console.log(loginUser);
                 setUser(loginUser)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error.message);
@@ -31,6 +32,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 setUser(loggedUser)
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
@@ -49,7 +51,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                navigate(from, {replace : true})
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error)
