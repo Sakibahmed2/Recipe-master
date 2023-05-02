@@ -38,7 +38,6 @@ const AuthProviders = ({ children }) => {
 
     useEffect(() => {
         const unSub = onAuthStateChanged(auth, loggedUser => {
-            console.log('logged user inside auth', loggedUser);
             setUser(loggedUser)
         })
 

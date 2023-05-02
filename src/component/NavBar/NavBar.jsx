@@ -11,7 +11,7 @@ const NavBar = () => {
             .catch(error => { console.log(error) })
     }
 
-    console.log(user);
+    console.log(user?.photoURL);
 
     return (
         <div>

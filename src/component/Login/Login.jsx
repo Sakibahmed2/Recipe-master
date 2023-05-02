@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../Providers/AuthProviders';
@@ -7,6 +7,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 const Login = () => {
 
     const { singIn, googleSingIn, githubSingIn } = useContext(AuthContext);
+    const [error, setError] = useState('')
 
     const handleGoogleSingIn = () => {
         googleSingIn()
@@ -39,13 +40,16 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-
+        setError('')
         singIn(email, password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                setError(error.message)
+            })
 
         form.reset()
     }
@@ -74,6 +78,7 @@ const Login = () => {
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
+                                <p>{error}</p>
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn my-btn border-none">Login</button>

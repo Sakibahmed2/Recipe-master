@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Chef from '../Chef/Chef';
 import { Link } from 'react-router-dom';
+import Speciality from '../ExtraTwoSection/Speciality';
+import HandMade from '../ExtraTwoSection/HandMade';
 
 const Home = () => {
 
@@ -17,8 +19,8 @@ const Home = () => {
     return (
         <div>
             <div className="hero mt-20 ">
-                <div className="hero-content flex-col lg:flex-row">
-                    <img src="https://img.freepik.com/free-photo/chicken-wings-barbecue-sweetly-sour-sauce-picnic-summer-menu-tasty-food-top-view-flat-lay_2829-6471.jpg?w=740&t=st=1682952964~exp=1682953564~hmac=d272d427bf04c69faeb30bdcf9979b5f54062ad19fcc29cd740dc4d496843012" className="max-w-2xl rounded-lg shadow-2xl" />
+                <div className="hero-content flex-col md:flex-row">
+                    <img src="https://img.freepik.com/free-photo/chicken-wings-barbecue-sweetly-sour-sauce-picnic-summer-menu-tasty-food-top-view-flat-lay_2829-6471.jpg?w=740&t=st=1682952964~exp=1682953564~hmac=d272d427bf04c69faeb30bdcf9979b5f54062ad19fcc29cd740dc4d496843012" className="md:max-w-2xl rounded-lg shadow-2xl" />
                     <div>
                         <h1 className="text-5xl font-bold">Welcome to
                             <span className='text-teal-400'>
@@ -34,7 +36,7 @@ const Home = () => {
             </div>
 
             {/* Chef section */}
-            <h2 className='text-4xl text-center mt-8 font-semibold'>Our Cooks </h2>
+            <h2 className='text-4xl text-center mt-8 font-bold'>Our Cooks </h2>
             <div className='grid md:grid-cols-3 gap-8 container mx-auto mt-12'>
                 {
                     chefs.map(chef => <Chef
@@ -43,6 +45,12 @@ const Home = () => {
                     ></Chef>)
                 }
             </div>
+
+            {/* Our fram section */}
+            <Speciality />
+            
+            {/* Handemade food section */}
+            <HandMade />
 
         </div>
     );
