@@ -1,14 +1,13 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { FaThumbsUp } from 'react-icons/fa';
+import ChefRecipe from '../ChefRecipe/ChefRecipe';
 
 
 const ChefDetails = () => {
     const { id } = useParams();
     const chefRecipe = useLoaderData()
-    console.log(chefRecipe);
     const { chef_name, chef_picture, description, likes, years_of_experience, specialty, recipes } = chefRecipe;
-    console.log(id);
 
     return (
         <div>
@@ -26,8 +25,13 @@ const ChefDetails = () => {
             </div>
             <div className='mt-32'>
                 <h2 className='text-4xl text-center font-semibold'>Chef recipes</h2>
-                <div>
-
+                <div className='grid grid-cols-3 gap-4 mt-24 '>
+                    {
+                        recipes.map(recipe => <ChefRecipe
+                            key={recipe.recipe_name}
+                            recipe={recipe}
+                        ></ChefRecipe>)
+                    }
                 </div>
             </div>
         </div>
