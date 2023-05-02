@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaBookmark } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ChefRecipe = ({ recipe }) => {
-    console.log(recipe);
+
+    const [favorite, setFavorite] = useState(false)
+
+    
+    const handleToast = () => {
+        toast("Added to favorite list")
+        setFavorite(true)
+    };
+
+
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl mx-auto">
             <figure><img src={recipe?.recipe_img} alt="Shoes" /></figure>
@@ -13,14 +24,15 @@ const ChefRecipe = ({ recipe }) => {
                     <h3 className='text-lg font-semibold'>Ingredients</h3>
                     {
                         recipe.ingredients.map(i => <p
-                         i={i}
+                            i={i}
                         >
                             {i}
                         </p>)
                     }
                 </div>
                 <div className="card-actions justify-end">
-                    <button className="btn my-btn border-none text-xl"><FaBookmark /></button>
+                    <button onClick={handleToast} disabled={favorite} className="btn my-btn border-none text-xl"><FaBookmark /></button>
+                    <ToastContainer />
                 </div>
             </div>
         </div>

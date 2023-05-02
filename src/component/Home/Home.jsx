@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Chef from '../Chef/Chef';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -25,13 +26,15 @@ const Home = () => {
                             </span>
                         </h1>
                         <p className="py-6">Our food is made with high-quality ingredients that are carefully sourced and prepared to create delicious and nutritious meals. We offer a wide range of options to suit different tastes and dietary needs, including vegetarian, vegan, and gluten-free dishes.</p>
-                        <button className="my-btn">Login</button>
+                        <Link to='/login'>
+                            <button className="my-btn">Login</button>
+                        </Link>
                     </div>
                 </div>
             </div>
 
             {/* Chef section */}
-                <h2 className='text-4xl text-center mt-8 font-semibold'>Our Cooks </h2>
+            <h2 className='text-4xl text-center mt-8 font-semibold'>Our Cooks </h2>
             <div className='grid md:grid-cols-3 gap-8 container mx-auto mt-12'>
                 {
                     chefs.map(chef => <Chef

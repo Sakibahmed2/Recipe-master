@@ -1,7 +1,50 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
 
 const Register = () => {
+    const [error, setError] = useState(null)
+
+    const { createUser } = useContext(AuthContext)
+
+    const handleRegister = e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        setError('');
+
+        if(password.length < 6){
+            setError('password must be 6 characters or longer')
+            return;
+        }
+        else if (!/(?=.*[0-9])/.test(password)) {
+            setError('put number')
+            return;
+        }
+        else if (!/(?=.*[!@#$&*])/.test(password)) {
+            setError('Please enter any special cherecter')
+            return;
+        }
+
+        createUser(email, password)
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser);
+            })
+            .catch(error => {
+                console.log(error);
+                setError(error.message)
+            })
+            form.reset()
+        
+    }
+
+
     return (
         <div className="hero  bg-base-200">
             <div className="hero-content flex-col ">
@@ -10,7 +53,7 @@ const Register = () => {
 
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form className="card-body w-96">
+                    <form onSubmit={handleRegister} className="card-body w-96">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
@@ -21,13 +64,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" placeholder="photo url" name='photo'  className="input input-bordered" />
+                            <input type="text" placeholder="photo url" name='photo' className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" placeholder="email" name='emial' required className="input input-bordered" />
+                            <input type="text" placeholder="email" name='email' required className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -35,15 +78,14 @@ const Register = () => {
                             </label>
                             <input type="text" placeholder="password" name='password' required className="input input-bordered" />
                             <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                <Link to='/login' className="label-text-alt link link-hover">Already have account</Link>
                             </label>
+                            {error && <p className='text-error'>{error}</p>}
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn my-btn border-none">Login</button>
                         </div>
-                        <label className="label">
-                            <Link to='/login' className="label-text-alt link link-hover">Already have account</Link>
-                        </label>
+
                     </form>
                 </div>
             </div>

@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleSingOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => { console.log(error) })
+    }
+
+    console.log(user);
+
     return (
         <div>
             <div className="py-4 bg-teal-500 text-white md:flex justify-between px-8 shadow-xl">
@@ -9,7 +20,27 @@ const NavBar = () => {
                 <div className='font-semibold text-xl'>
                     <Link to="/">Home</Link>
                     <Link to="/" className='mx-20'>Blog</Link>
-                    <Link to="/" >Blog</Link>
+
+                    {
+                        user ?
+                            <>
+                                <button className='mr-8' onClick={handleSingOut}>SingOut</button>
+                            </>
+                            :
+                            <button>
+                                <Link to='/login'>
+                                    Login
+                                </Link>
+                            </button>
+                    }
+                    {
+                        user &&
+
+                        <div className='tooltip tooltip-bottom ' data-tip={user?.displayName}>
+                            <img src={user?.photoURL} className='w-14 rounded-full  tooltip mr-8' alt="" />
+                        </div>
+
+                    }
                 </div>
             </div>
         </div>
