@@ -22,14 +22,7 @@ const Register = () => {
             setError('password must be 6 characters or longer')
             return;
         }
-        else if (!/(?=.*[0-9])/.test(password)) {
-            setError('put number')
-            return;
-        }
-        else if (!/(?=.*[!@#$&*])/.test(password)) {
-            setError('Please enter any special cherecter')
-            return;
-        }
+        
 
         createUser(email, password)
             .then(result => {

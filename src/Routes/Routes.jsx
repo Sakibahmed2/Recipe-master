@@ -6,12 +6,14 @@ import Home from "../component/Home/Home";
 import Login from "../component/Login/Login";
 import Register from "../component/Register/Register";
 import ChefDetails from "../component/ChefDetails/ChefDetails";
+import ErrorPage from "../component/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -32,6 +34,7 @@ const router = createBrowserRouter([
             }
         ]
     }
+
 ])
 
 export default router;
