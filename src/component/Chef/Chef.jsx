@@ -14,7 +14,6 @@ const Chef = ({ chef }) => {
                 <h2 className="card-title">Name : <span className='text-teal-500'>{chef_name}</span></h2>
                 <p>Experience : {years_of_experience}</p>
                 <p> Recipes : {recipes.length}</p>
-                <p>Years of experience : {years_of_experience}</p>
                 <span className='flex items-center '> <FaThumbsUp /> {likes}</span>
                 <div className="card-actions justify-end">
                     <Link to={`/recipes/${id}`}>
