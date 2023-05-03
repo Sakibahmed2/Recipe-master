@@ -5,7 +5,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 const Register = () => {
     const [error, setError] = useState(null)
 
-    const { createUser } = useContext(AuthContext)
+    const { userProfiel, createUser } = useContext(AuthContext)
 
     const handleRegister = e => {
         e.preventDefault();
@@ -28,6 +28,8 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 const createdUser = result.user;
+                result.user.displayName = name;
+                result.user.photoURL = photo;
                 console.log(createdUser);
             })
             .catch(error => {
@@ -47,7 +49,7 @@ const Register = () => {
 
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form onSubmit={handleRegister} className="card-body w-96">
+                    <form onSubmit={handleRegister} className="card-body w-[330px] md:w-96">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>

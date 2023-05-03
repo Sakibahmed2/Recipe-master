@@ -8,7 +8,7 @@ const ChefRecipe = ({ recipe }) => {
 
     const [favorite, setFavorite] = useState(false)
 
-    
+
     const handleToast = () => {
         toast("Added to favorite list")
         setFavorite(true)
@@ -16,7 +16,7 @@ const ChefRecipe = ({ recipe }) => {
 
 
     return (
-        <div className="card card-compact md:w-96 bg-base-100 shadow-xl mx-auto">
+        <div className="card card-compact w-[330px] md:w-96 bg-base-100 shadow-xl mx-auto">
             <figure><img src={recipe?.recipe_img} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{recipe?.recipe_name}</h2>
@@ -31,7 +31,8 @@ const ChefRecipe = ({ recipe }) => {
                     }
                 </div>
                 <div className="card-actions justify-end">
-                    <button onClick={handleToast} disabled={favorite} className="btn my-btn border-none text-xl"><FaBookmark /></button>
+                    <button onClick={handleToast} disabled={favorite} className="btn my-btn border-none text-md">
+                        Favorite  <span className='pl-2'><FaBookmark /></span></button>
                     <ToastContainer />
                 </div>
             </div>

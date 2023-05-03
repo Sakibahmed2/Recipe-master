@@ -37,7 +37,7 @@ const AuthProviders = ({ children }) => {
         return signInWithPopup(auth, githubAuthProvider)
     } 
 
-  
+    
     
 
     useEffect(() => {
@@ -60,6 +60,7 @@ const AuthProviders = ({ children }) => {
         logOut,
         googleSingIn,
         githubSingIn,
+        
     }
 
     return (

@@ -28,8 +28,8 @@ const Home = () => {
                             </span>
                         </h1>
                         <p className="py-6">Our food is made with high-quality ingredients that are carefully sourced and prepared to create delicious and nutritious meals. We offer a wide range of options to suit different tastes and dietary needs, including vegetarian, vegan, and gluten-free dishes.</p>
-                        <Link to='/login'>
-                            <button className="my-btn">Login</button>
+                        <Link to='/blog'>
+                            <button className="my-btn">Blog</button>
                         </Link>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ const Home = () => {
 
             {/* Chef section */}
             <h2 className='text-4xl text-center mt-8 font-bold'>Our Cooks </h2>
-            <div className='grid md:grid-cols-3 gap-8 container mx-auto mt-12'>
+            <div className='grid md:grid-cols-3 gap-8 justify-center container mx-auto mt-12'>
                 {
                     chefs.map(chef => <Chef
                         key={chef.id}
