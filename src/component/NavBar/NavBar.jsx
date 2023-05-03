@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 import ActiveLink from '../ActiveLink/ActiveLink';
 
@@ -15,7 +14,7 @@ const NavBar = () => {
 
     return (
         <div>
-            <div className="py-4 bg-teal-500 text-white md:flex justify-between px-8 shadow-xl">
+            <div className="py-4 bg-teal-500 text-white md:flex justify-between px-4 md:px-8 shadow-xl">
                 <h2 className=" font-semibold text-3xl">Recipe master</h2>
                 <div className='font-semibold text-xl mt-2 md:mt-0 flex items-center '>
                     <ActiveLink to="/">Home</ActiveLink>
