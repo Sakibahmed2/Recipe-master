@@ -8,6 +8,7 @@ import Register from "../component/Register/Register";
 import ChefDetails from "../component/ChefDetails/ChefDetails";
 import ErrorPage from "../component/ErrorPage/ErrorPage";
 import PrivetRoutes from "./PrivetRoutes";
+import Blog from "../component/Blog/Blog";
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
                 path: '/recipes/:id',
                 element: <PrivetRoutes><ChefDetails></ChefDetails></PrivetRoutes>,
                 loader: ({ params }) => fetch(`https://recipe-master-server-sakibahmed2.vercel.app/chef/${params.id}`)
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             }
         ]
     }

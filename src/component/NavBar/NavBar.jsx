@@ -18,7 +18,7 @@ const NavBar = () => {
                 <h2 className=" font-semibold text-3xl">Recipe master</h2>
                 <div className='font-semibold text-xl'>
                     <Link to="/">Home</Link>
-                    <Link to="/" className='mx-20'>Blog</Link>
+                    <Link to="/blog" className='mx-20'>Blog</Link>
 
                     {
                         user ?

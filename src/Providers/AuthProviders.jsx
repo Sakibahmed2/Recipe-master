@@ -15,13 +15,13 @@ const AuthProviders = ({ children }) => {
     const githubAuthProvider = new GithubAuthProvider()
 
     const createUser = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
         setLoading(true)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const singIn = (email, password) => {
-        return signInWithEmailAndPassword(auth, email, password)
         setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     const logOut = () => {
@@ -37,6 +37,7 @@ const AuthProviders = ({ children }) => {
         return signInWithPopup(auth, githubAuthProvider)
     } 
 
+  
     
 
     useEffect(() => {
@@ -58,7 +59,7 @@ const AuthProviders = ({ children }) => {
         singIn,
         logOut,
         googleSingIn,
-        githubSingIn
+        githubSingIn,
     }
 
     return (

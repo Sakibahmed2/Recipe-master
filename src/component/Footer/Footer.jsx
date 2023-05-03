@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div>
             <footer className="footer p-10 bg-base-200 text-base-content md:flex  md:justify-between justify-center">
-                <div className='w-[520px]'>
+                <div className='md:w-[520px]'>
                     <h4 className='text-4xl font-bold text-teal-500'>Recipe master</h4>
                     <p className='text-lg text-gray-500 '>
                         Our food is made with high-quality ingredients that are carefully sourced and prepared to create delicious and nutritious meals. We offer a wide range of options to suit different tastes and dietary needs, including vegetarian, vegan, and gluten-free dishes.
